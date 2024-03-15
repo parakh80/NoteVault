@@ -5,7 +5,7 @@ dotenv.config({path: 'backend/.env'});
 export  async function getChatGPTResponse(prompt) {
 
   const openai = new OpenAI({
-    apiKey:'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'
+    apiKey:process.env.API_KEY_OF_OPENAI
   });
 
     const completion = await openai.chat.completions.create({
