@@ -10,7 +10,6 @@ console.log(notes)
   const fetchAllNote = async() => {
     //api call
     try{
-    // const response = await fetch(`${host}/api/notes/fetchNotes`, {
       const response = await fetch(`/api/notes/fetchNotes`, {
       method: "GET", 
       
@@ -31,7 +30,6 @@ console.log(notes)
 
   const addNote = async(title,description,tag) => {
     //api call
-    // const response = await fetch(`${host}/api/notes/createNote`, {
     const response = await fetch(`/api/notes/createNote`, {
       method: "POST", 
       
