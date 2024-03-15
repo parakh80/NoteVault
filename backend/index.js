@@ -23,6 +23,11 @@ process.on("uncaughtException", (err) => {
     console.log("Shutting down due to uncaught expection");
     process.exit(1);
   });
+
+
+  if (process.env.NODE_ENV !== "PRODUCTION") {
+    dotenv.config({ path: "backend/.env" });
+  }
   
 
   if (process.env.NODE_ENV === "PRODUCTION") {
@@ -51,7 +56,7 @@ app.get('/',  (req,res) => {
 const port = process.env.PORT;
 
 app.listen(port,() => {
-    console.log(`Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`)
+    console.log(`Server started on PORT: ${port} in ${process.env.NODE_ENV} mode.`)
 })
 
 //Handle Unhandled Promise rejections
