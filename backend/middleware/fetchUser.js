@@ -3,7 +3,6 @@ import  jwt from 'jsonwebtoken';
 export const fetchUser = async (req,res,next) => {
 //get token from header
 const token = req.header('Token');
-console.log(token);
 if(!token){
     return res.status(401).send({error:'Plase authenticate using valid token'})
 }

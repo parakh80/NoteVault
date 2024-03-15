@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
 dotenv.config({path: 'backend/.env'});
-console.log(process.env.DB_LOCAL_URI)
 export const connectMongo = async () => {
 
 let DB_URI = "";
