@@ -1,11 +1,14 @@
 {
   "name": "notevault-backend",
+  "type": "module",
   "version": "1.0.0",
   "description": "notevault - Store notes and other stuff on cloud",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon index.js"
+    "start": "nodemon backend/index.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon backend/index.js",
+    "prod": "NODE_ENV=PRODUCTION nodemon backend/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +19,11 @@
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.1",
+    "mongodb": "^6.5.0",
     "mongoose": "^7.4.4",
     "openai": "^4.24.1",
+    "path": "^0.12.7",
+    "url": "^0.11.3",
     "validator": "^13.11.0"
   },
   "devDependencies": {

@@ -1,9 +1,9 @@
-const express = require('express') ;
-const Router = express.Router();
-const { body, validationResult } =require('express-validator');
-const fetchUser = require('../middleware/fetchUser');
+import express from 'express';
+import { body, validationResult } from 'express-validator';
+import {fetchUser}  from '../middleware/fetchUser.js';
+import { sign_up, sign_in, getUser } from '../controllers/authController.js';
 
-const { sign_up, sign_in, getUser } =require('../controllers/authController');
+const Router = express.Router();
 
 //Route 1 : Creating a anew User using POST '/api/auth/sign-up'.   no login required!
 Router.post('/sign-up', [
@@ -13,9 +13,9 @@ Router.post('/sign-up', [
 ], sign_up );
 
 //Route 2 : Authenticate user using POST '/api/auth/sign-in' no login required
-Router.post('/sign-in',sign_in);
+Router.post('/sign-in', sign_in);
 
 //Route 3 : Get logged  user detail  using POST '/api/auth/getUser' login required.
-Router.post('/getUser',fetchUser, getUser);
+Router.post('/getUser', fetchUser, getUser);
 
-module.exports = Router;
+export default Router;

@@ -1,9 +1,9 @@
-const User =require('../models/User');
-const { body, validationResult } =require('express-validator');
-const validator =require('validator');
+import User from '../models/User.js';
+import  { body, validationResult } from 'express-validator';
+import  validator from 'validator';
 
 
- const sign_up = async (req, res) => {
+export const sign_up = async (req, res) => {
     let success = false
     //if there are errors return bad request and errors 
     const errors = validationResult(req);
@@ -46,7 +46,7 @@ const validator =require('validator');
 
 
 
- const sign_in =  async (req, res) => {
+export const sign_in =  async (req, res) => {
     let success = false;
     try {
        
@@ -124,7 +124,7 @@ const validator =require('validator');
 
 }
 
- const getUser = async (req, res) => {
+export const getUser = async (req, res) => {
 
     try {
         const userId = req.userId;
@@ -138,4 +138,3 @@ const validator =require('validator');
 
 }
 
-module.exports = { sign_up,sign_in,getUser }

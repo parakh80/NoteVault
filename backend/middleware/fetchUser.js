@@ -1,5 +1,6 @@
-const  jwt = require('jsonwebtoken');
- const fetchUser = async (req,res,next) => {
+import  jwt from 'jsonwebtoken';
+
+export const fetchUser = async (req,res,next) => {
 //get token from header
 const token = req.header('Token');
 console.log(token);
@@ -15,4 +16,3 @@ try {
 }
 }
 
-module.exports = fetchUser;

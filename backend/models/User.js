@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import mongoose from 'mongoose';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
 const userSchema = new mongoose.Schema({
@@ -44,4 +44,4 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 
 const User = mongoose.model('user',userSchema);
-module.exports = User;
+export default  User;

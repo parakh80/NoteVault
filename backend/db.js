@@ -1,14 +1,19 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config({path: 'backend/.env'});
+console.log(process.env.DB_LOCAL_URI)
+export const connectMongo = async () => {
 
-const mongoURI = 'mongodb://localhost:27017/NoteVault';
+let DB_URI = "";
+
+if (process.env.NODE_ENV === "DEVELOPMENT") DB_URI = process.env.DB_LOCAL_URI;
+if (process.env.NODE_ENV === "PRODUCTION") DB_URI = process.env.DB_ONLINE_URI;
 
 
-const connectMongo = async () => {
-   
-    await mongoose.connect(mongoURI);
-  
-    console.log('Connected to mongo succesfully')
+mongoose.connect(DB_URI).then((con) => {
+    console.log(
+      `MongoDB Database connected with HOST: ${con?.connection?.host}`
+    );
+  });
 
 }
-
-module.exports =  connectMongo;

@@ -5,23 +5,24 @@ import Noteitem from './Noteitem'
 import { useNavigate } from 'react-router-dom'
 function Notes(props) {
   const context = useContext(Notecontext)
-  let Navigate = useNavigate() 
+  let Navigate = useNavigate()
 
 
   const { notes, fetchAllNote, editNote } = context
   useEffect(() => {
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
+      console.log(localStorage.getItem('token'))
       props.setProgress(50);
       fetchAllNote()
       props.setProgress(100);
-    }else{
+    } else {
       Navigate('/login')
     }
-   
+
     // eslint-disable-next-line
   }, [])
 
-  const [note, setNote] = useState({etitle:"",edescription:"",etag:""})
+  const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" })
 
 
   const ref = useRef(null)
@@ -30,22 +31,22 @@ function Notes(props) {
   const updateNote = (currentNote) => {
     console.log('Updating note:', currentNote);
     ref.current.click();
-    setNote({id:currentNote._id, etitle:currentNote.title, edescription:currentNote.description, etag:currentNote.tag});
+    setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
   }
   const onChange = (e) => {
-        
-    setNote({...note, [e.target.name]: e.target.value})
-}
 
-const handleClick = (e) => {
-  props.setProgress(50);
-  console.log('Updating a note' + note)
-  editNote(note.id, note.etitle, note.edescription, note.etag)
-  props.setProgress(100);
-  refClose.current.click();
-  props.showAlert("Successfully Updated","success");
+    setNote({ ...note, [e.target.name]: e.target.value })
+  }
 
-}
+  const handleClick = (e) => {
+    props.setProgress(50);
+    console.log('Updating a note' + note)
+    editNote(note.id, note.etitle, note.edescription, note.etag)
+    props.setProgress(100);
+    refClose.current.click();
+    props.showAlert("Successfully Updated", "success");
+
+  }
   return (
     <>
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -86,13 +87,13 @@ const handleClick = (e) => {
             </div>
             <div className="modal-footer">
               <button ref={refClose} type="button" className="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-              <button disabled={note.etag.length<3 || note.edescription.length<5} type="button" onClick={handleClick} className="btn btn-outline-primary">Update Note</button>
+              <button disabled={note.etag.length < 3 || note.edescription.length < 5} type="button" onClick={handleClick} className="btn btn-outline-primary">Update Note</button>
 
             </div>
           </div>
         </div>
       </div>
-      <div className="row my-3">
+      {/* <div className="row my-3">
         <h2>Your Notes</h2>
         
         <div className="container mx-2"> 
@@ -101,7 +102,19 @@ const handleClick = (e) => {
         {notes.map((note) => {
           return <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
         })}
+        
+      </div> */}
+
+      <div className="row my-3">
+        <h2>Your Notes</h2>
+        {notes.length > 0
+          ? notes.map((note) => (
+            <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
+          ))
+          : <div className="container mx-2">No notes to display</div>
+        }
       </div>
+
     </>
   )
 }

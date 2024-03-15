@@ -1,8 +1,8 @@
-const Note = require('../models/Note') ;
-const { body, validationResult } = require('express-validator') ;
-const Gpt = require('../Gpt') ;
+import Note  from '../models/Note.js' ;
+import { body, validationResult } from 'express-validator';
+import { getChatGPTResponse as Gpt } from '../Gpt.js';
 
- const fetchNotes = async (req, res) => {
+export const fetchNotes = async (req, res) => {
 
     try {
         const notes = await Note.find({user: req.userId});
@@ -30,7 +30,7 @@ const Gpt = require('../Gpt') ;
 
 }
 
- const createNote = async (req, res) => {
+export const createNote = async (req, res) => {
 
     //if there are errors return bad request and errors 
     const errors = validationResult(req);
@@ -63,7 +63,7 @@ const Gpt = require('../Gpt') ;
 
 }
 
- const updateNote = async (req, res) => {
+export const updateNote = async (req, res) => {
     try {
         let newNote = {};
         const { title, description, tag } = req.body;
@@ -100,10 +100,8 @@ const Gpt = require('../Gpt') ;
     }
 }
 
- const deleteNote = async (req, res) => {
+export const deleteNote = async (req, res) => {
     try {
-        
-       
         //finding note i available 
         let note = await Note.findById(req.params.id);
         if (!note) { return res.status(401).send({ error: 'Note is not available' }) };
@@ -119,6 +117,3 @@ const Gpt = require('../Gpt') ;
         res.status(500).json({ error: 'Server error' });
     }
 }
-
-
-module.exports = {fetchNotes,createNote,updateNote,deleteNote}

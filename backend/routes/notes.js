@@ -1,9 +1,9 @@
-const express =require('express') ;
-const Router = express.Router();
-const { body, validationResult } =require('express-validator');
-const fetchUser  =require('../middleware/fetchUser');
-const {fetchNotes,createNote,updateNote,deleteNote}  =require('../controllers/notesController');
+import express from 'express';
+import { body, validationResult } from 'express-validator';
+import {fetchUser}  from '../middleware/fetchUser.js';
+import {fetchNotes,createNote,updateNote,deleteNote}  from '../controllers/notesController.js';
 
+const Router = express.Router();
 
 //Route 1: fetch user Notes using GET '/api/notes/fetchNote'.  login required!
 Router.get('/fetchNotes', fetchUser, fetchNotes )
@@ -25,4 +25,4 @@ Router.put('/updateNote/:id', fetchUser, updateNote )
 //Route 4: Delete user Notes using Delete '/api/notes/deleteNote/:id'.  login required!
 Router.delete('/deleteNote/:id', fetchUser, deleteNote)
 
-module.exports = Router;
+export default Router;
