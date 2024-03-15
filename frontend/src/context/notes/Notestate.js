@@ -3,11 +3,10 @@ import { useState } from "react";
 
 
 const Notestate = (props) => {
-  // const host = 'http://localhost:4000'
  
   const [notes, setNotes] = useState([])
 
-
+console.log(notes)
   const fetchAllNote = async() => {
     //api call
     try{
@@ -44,8 +43,8 @@ const Notestate = (props) => {
       body: JSON.stringify({title,description,tag}), 
     });
     const resultInJson = await response.json() 
-    console.log('Adding a note')
-    console.log(notes)
+
+   
     setNotes(notes.concat(resultInJson ));
   }
 
@@ -62,7 +61,7 @@ const Notestate = (props) => {
 
   });
   const resultInJson = await response.json();
-     console.log(resultInJson) 
+  
      console.log('deleting note ' + id);
      const newNotes = notes.filter((note) => {return note._id !== id})
      setNotes(newNotes)
@@ -95,7 +94,7 @@ const Notestate = (props) => {
             : note
         )
       );
-      // console.log(notes);
+    
     } catch (error) {
       console.error('Error updating note:', error);
     }

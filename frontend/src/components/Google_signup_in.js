@@ -2,7 +2,6 @@ import React from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-const host = 'http://localhost:4000';
 
 
 function Google_signup_in(props) {
@@ -17,7 +16,6 @@ function Google_signup_in(props) {
     user.password = 'hello123'
 
     try {
-      // const response = await fetch(`${host}/api/auth/sign-in`, {
       const response = await fetch(`/api/auth/sign-in`, {
         method: "POST",
 

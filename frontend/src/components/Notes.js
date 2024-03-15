@@ -29,7 +29,6 @@ function Notes(props) {
   const refClose = useRef(null)
 
   const updateNote = (currentNote) => {
-    console.log('Updating note:', currentNote);
     ref.current.click();
     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
   }
@@ -40,7 +39,6 @@ function Notes(props) {
 
   const handleClick = (e) => {
     props.setProgress(50);
-    console.log('Updating a note' + note)
     editNote(note.id, note.etitle, note.edescription, note.etag)
     props.setProgress(100);
     refClose.current.click();

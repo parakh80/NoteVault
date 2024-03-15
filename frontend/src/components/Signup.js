@@ -29,7 +29,6 @@ const Signup = (props) => {
       Navigate('/')
 
     }else{
-      console.log(resultInJson)
       if(resultInJson.error === 'heyy!!'){
         props.showAlert('You already sign-up, Please sign-in','danger')
       }else if(resultInJson.error === 'Try to sign-in with google'){
