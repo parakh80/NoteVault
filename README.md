@@ -8,16 +8,20 @@ To get started with FreshNews, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/parakh80/FreshNews.git
+   git clone https://github.com/parakh80/NoteVault.git
    ```
 
 2. **Set Up Environment Variables:**
    - Navigate to the backend directory and create a `.env` file.
    - Add the following environment variable to the `.env` file:
      ```
-     NEWS_API_KEY=your_news_api_key
-     MODE=DEVELOPMENT
-     PORT=
+      PORT=
+      NODE_ENV=DEVELOPMENT
+      API_KEY_OF_OPENAI=
+      JWT_SECRET=
+      JWT_EXPIRES_TIME=7d
+      DB_LOCAL_URI=
+      DB_ONLINE_URI=
      ```
      Note: Replace `your_news_api_key` with your actual News API key obtained from newsapi.org.
 
