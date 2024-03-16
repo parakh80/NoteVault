@@ -23,7 +23,7 @@ To get started with FreshNews, follow these steps:
       DB_LOCAL_URI=
       DB_ONLINE_URI=
      ```
-     Note: Replace `your_news_api_key` with your actual News API key obtained from newsapi.org.
+ 
 
 3. **Install Dependencies:**
    - Navigate to the root directory of the project.
