@@ -3,6 +3,18 @@
 ## Overview
 Welcome to NoteVault, your personal note-taking haven! NoteVault allows users to effortlessly organize their thoughts, create, and manage their notes in a user-friendly environment.
 
+### Home
+![Image 1](frontend/public/images/home.jpg)
+
+### Login
+![Image 1](frontend/public/images/login.jpg)
+
+### Signup
+![Image 1](frontend/public/images/signup.jpg)
+
+### Update
+![Image 1](frontend/public/images/update.jpg)
+
 ## Getting Started
 To get started with FreshNews, follow these steps:
 
